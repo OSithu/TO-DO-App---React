@@ -12,7 +12,7 @@ const Todo = () => {
         const descText = descInputRef.current.value.trim();
 
         if (taskText === "" || descText === "") {
-            return null;   //Don't have any text in input filed return null
+            return null;  
         }
 
         const newTodo = {
