@@ -3,6 +3,6 @@
 
 
 # Instruction for Use 
--In the project directory, you can run: npm run dev 
+In the project directory, you can run: npm run dev 
 
 
