@@ -1,18 +1,37 @@
 import React from 'react';
-import Todo from './components/Todo';
-import backgroundImage from './assets/bg.jpg';  // Adjust the filename if necessary
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { AuthProvider } from './components/AuthContext';
+import SignUp from './components/Signup';
+import Login from './components/Login';
+import Todo from './components/Todo';  // Import the To-Do component
+import PrivateRoute from './components/PrivateRoute';  // Import PrivateRoute
+import backgroundImage from './assets/bg.jpg';  // Your background image
 
-const App = () => {
+function App() {
   return (
-    <div
-      className='bg-stone-900 grid py-4 min-h-screen bg-cover bg-center'
-      style={{ backgroundImage: `url(${backgroundImage})` }}  // Background image
-    >
-      <div className="ml-auto mr-10">  {/* Align Todo to the right */}
-        <Todo />
-      </div>
-    </div>
+    <AuthProvider>
+      <Router>
+        <div
+          className='bg-stone-900 grid py-4 min-h-screen bg-cover bg-center'
+          style={{ backgroundImage: `url(${backgroundImage})` }}  // Background image
+        >
+          <Routes>
+            <Route path="/" element={<SignUp />} />
+            <Route path="/login" element={<Login />} />
+            {/* Protect ToDo route with PrivateRoute */}
+            <Route 
+              path="/todo" 
+              element={
+                <PrivateRoute>
+                  <Todo />
+                </PrivateRoute>
+              } 
+            />
+          </Routes>
+        </div>
+      </Router>
+    </AuthProvider>
   );
-};
+}
 
 export default App;

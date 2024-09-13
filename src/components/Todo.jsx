@@ -60,6 +60,8 @@ const Todo = () => {
     }, [todoList]);
 
     return (
+
+        
         <div className='bg-white place-self-center w-11/12 max-w-lg flex flex-col p-7 min-h-[550px] rounded-xl shadow-lg'>
 
             {/* ----------Title-------- */}
